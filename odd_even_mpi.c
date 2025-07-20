@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <string.h> // Adicionado para memcpy
+#include <string.h> 
 
 #ifdef _WIN32
 #include <windows.h>
@@ -142,10 +142,10 @@ int main(int argc, char *argv[]) {
         
         // Determinar qual metade manter
         if (rank < partner) {
-            // Este processo fica com a metade inferior
+            // metade inferior
             memcpy(local_arr, merged_arr, local_n * sizeof(int));
         } else {
-            // Este processo fica com a metade superior
+            // metade superior
             memcpy(local_arr, merged_arr + local_n, local_n * sizeof(int));
         }
         

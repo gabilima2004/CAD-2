@@ -46,17 +46,17 @@ int is_sorted(int arr[], int n) {
     return 1; // Retorna 1 (verdadeiro) se o array estiver ordenado
 }
 
-// Implementação do algoritmo Odd-Even Sort serial [cite: 9, 18]
+// Implementação do algoritmo Odd-Even Sort serial 
 void odd_even_sort_serial(int arr[], int n) {
     int phase, i;
-    for (phase = 0; phase < n; phase++) { // O algoritmo executa n fases [cite: 8]
-        if (phase % 2 == 0) { // Fase Par [cite: 6, 21, 22]
+    for (phase = 0; phase < n; phase++) { // O algoritmo executa n fases 
+        if (phase % 2 == 0) { // Fase Par 
             for (i = 1; i < n; i += 2) {
                 if (arr[i - 1] > arr[i]) {
                     swap(&arr[i - 1], &arr[i]);
                 }
             }
-        } else { // Fase Ímpar [cite: 7, 28, 29]
+        } else { // Fase Ímpar 
             for (i = 1; i < n - 1; i += 2) {
                 if (arr[i] > arr[i + 1]) {
                     swap(&arr[i], &arr[i + 1]);
@@ -71,34 +71,34 @@ int main(int argc, char *argv[]) {
     // Configurar codificação UTF-8 no Windows
     SetConsoleOutputCP(CP_UTF8);
     #endif
-    if (argc != 2) { // Valida os argumentos de entrada [cite: 59]
-        printf("Uso: %s <tamanho_array>\n", argv[0]); // [cite: 60]
+    if (argc != 2) { // Valida os argumentos de entrada 
+        printf("Uso: %s <tamanho_array>\n", argv[0]); 
         return 1;
     }
 
-    int n = atoi(argv[1]); // [cite: 63]
+    int n = atoi(argv[1]); 
     int *arr = (int *)malloc(n * sizeof(int));
     if (arr == NULL) {
         printf("Erro na alocação de memória.\n");
         return 1;
     }
 
-    generate_random_array(arr, n, 1000); // [cite: 66]
+    generate_random_array(arr, n, 1000); 
     printf("Array original: ");
     print_array(arr, n);
 
     // Medição de tempo usando time() para a versão serial
     clock_t start = clock();
-    odd_even_sort_serial(arr, n); // [cite: 74]
+    odd_even_sort_serial(arr, n); 
     clock_t end = clock();
     double elapsed_time = ((double)(end - start)) / CLOCKS_PER_SEC;
 
     printf("Array ordenado: ");
     print_array(arr, n);
 
-    printf("Array está ordenado? %s\n", is_sorted(arr, n) ? "Sim" : "Não"); // [cite: 82]
+    printf("Array está ordenado? %s\n", is_sorted(arr, n) ? "Sim" : "Não"); 
     printf("SERIAL_TIME: %.6f\n", elapsed_time);
 
-    free(arr); // [cite: 83]
-    return 0; // [cite: 84]
+    free(arr); 
+    return 0; 
 }

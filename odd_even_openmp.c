@@ -1,18 +1,15 @@
 // odd_even_openmp.c
-// Implementação paralela com OpenMP do Odd-Even Transposition Sort.
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <omp.h> // [cite: 116]
+#include <omp.h> 
 #include <time.h>  // Para time(NULL)
 
 #ifdef _WIN32
 #include <windows.h>
 #endif
 
-// Funções auxiliares (swap, print_array, generate_random_array, is_sorted)
-// (Copiar as mesmas funções do arquivo serial aqui para o código ser autocontido)
-
+// Funções auxiliares 
 void swap(int *a, int *b) { int temp = *a; *a = *b; *b = temp; }
 
 void print_array(int arr[], int n) {
@@ -74,15 +71,14 @@ int main(int argc, char *argv[]) {
     printf("Array original: ");
     print_array(arr, n);
 
-    // Medição de tempo com omp_get_wtime() [cite: 115, 121]
+    // Medição de tempo com omp_get_wtime() 
     double start_time = omp_get_wtime();
     
-    // Para testar as diferentes políticas, altere o 'schedule(static)' no código
-    // ou crie diferentes funções para cada uma.
+
     odd_even_sort_openmp(arr, n, num_threads);
 
-    double end_time = omp_get_wtime(); // [cite: 128]
-    double elapsed_time = end_time - start_time; // [cite: 129, 130, 131]
+    double end_time = omp_get_wtime();
+    double elapsed_time = end_time - start_time; 
 
     printf("Array ordenado: ");
     print_array(arr, n);
